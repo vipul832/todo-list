@@ -8,7 +8,7 @@ To-do lists are a list of tasks that an individual needs to complete or accompli
 - Typescript <img src="https://user-images.githubusercontent.com/122255127/230858024-198ce013-8b85-454b-b345-7e20f6e26b15.png" width="40px"/>
 
 ## Live Demo
-
+- [DEMO LINK](https://magnificent-genie-6e6971.netlify.app/)
 
 ## Task To Perform
 - Create a dummy project named “Todo-react-app” in react using any of the above methods - CRA or webpack from scratch.
@@ -18,7 +18,7 @@ To-do lists are a list of tasks that an individual needs to complete or accompli
 - Import them in App.js file and keep the styling in App.css file (or segregate CSS files based on components).
 
 ## Setup Information
-- If you don't know how to setup react typescript in your local system refer [SETUP_REACT_TYPESCRIPT_USING_VIT](https://github.com/vipulc8/react_step_from_scratch).
+- If you don't know how to setup react typescript in your local system refer [SETUP_REACT_TYPESCRIPT_USING_VITE](https://github.com/vipulc8/react_step_from_scratch).
 - Clone this repository for Your further use.
 
 ## Screenshot of Todo List UI
