@@ -1,6 +1,60 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  font-family: "Poppins", sans-serif;
 }
+
+.todo-area {
+  width: 28rem;
+  height: 40rem;
+  background-color: #ffff;
+}
+
+.add-btn {
+  top: 94%;
+  left: 42%;
+  font-size: 3rem;
+  color: #94949c;
+  border-radius: 50%;
+  background-color: #5ad3a0;
+  width: 5rem;
+  height: 5rem;
+  text-align: center;
+  border: none;
+}
+
+.date-area div {
+  margin-left: 0.5rem;
+}
+
+.day-date {
+  font-size: 2.6rem;
+  font-weight: 500;
+  height: 3rem;
+  padding: 0;
+}
+
+.month-year-area {
+  flex-direction: column;
+  line-height: 1.2rem;
+}
+
+.month-year-area p {
+  margin-bottom: 0;
+}
+
+.task-area {
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  margin: 0 3rem 0 3rem;
+}
+
+.stat-btn {
+  background: transparent;
+  border: none;
+}
+
+/* .stat-img {
+  width: 0.2rem;
+  height: 0.2rem; 
+}
+  */
