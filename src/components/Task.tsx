@@ -19,8 +19,8 @@ export default function Task(props: TaskProps) {
           id="stat-img"
           src={`${
             props.status
-              ? "./src/assets/task-completed.png"
-              : "./src/assets/task-not-completed.png"
+              ? "/assets/task-completed.png"
+              : "/assets/task-not-completed.png"
           }`}
           alt="status"
           style={{ width: "1.8rem", height: "1.8rem" }}
