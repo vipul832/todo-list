@@ -5,13 +5,13 @@ const todayDay = new Date().getDay(); // (week)
 const todayMonth = new Date().getMonth(); // (month)
 const todayYear = new Date().getFullYear();
 const DAYS = [
+  "SUNDAY",
   "MONDAY",
   "TUESDAY",
   "WEDNESDAY",
   "THURSDAY",
   "FRIDAY",
   "SATURDAY",
-  "SUNDAY",
 ];
 
 const MONTHS = [

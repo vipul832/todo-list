@@ -45,5 +45,16 @@
   justify-content: center;
   flex-direction: column;
   display: flex;
-  margin: 0 4rem 0 4rem;
+  margin: 0 3rem 0 3rem;
 }
+
+.stat-btn {
+  background: transparent;
+  border: none;
+}
+
+/* .stat-img {
+  width: 0.2rem;
+  height: 0.2rem; 
+}
+  */

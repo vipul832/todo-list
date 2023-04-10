@@ -36,8 +36,14 @@ export default class TodoTask extends Component {
   render() {
     return (
       <div className="task-area">
-        {todoObj.map((todo) => {
-          return <Task text={todo.task} status={todo.status} />;
+        {todoObj.map((todo, index) => {
+          return (
+            <Task
+              key={todo.task + index}
+              text={todo.task}
+              status={todo.status}
+            />
+          );
         })}
       </div>
     );
