@@ -3,6 +3,7 @@ type TaskProps = {
   text: string;
   status: boolean;
   setComp: Function;
+  delObj: Function;
 };
 
 export default function Task(props: TaskProps) {
@@ -16,7 +17,7 @@ export default function Task(props: TaskProps) {
       <button
         className="stat-btn"
         onClick={() => {
-          props.status ? "pending" : props.setComp();
+          props.status ? props.delObj() : props.setComp();
         }}
       >
         {" "}

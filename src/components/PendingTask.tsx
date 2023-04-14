@@ -2,12 +2,12 @@ import React from "react";
 import Task from "./Task";
 import { TodosStruc } from "./TodoTask";
 
-type props = {
+type Props = {
   pObj: TodosStruc;
   setComp: Function;
 };
 
-export default function PendingTask({ pObj, setComp }: props) {
+export default function PendingTask({ pObj, setComp }: Props) {
   return (
     <div>
       {pObj?.map((todo, index) => {

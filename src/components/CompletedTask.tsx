@@ -2,11 +2,12 @@ import React from "react";
 import Task from "./Task";
 import { TodosStruc } from "./TodoTask";
 
-type props = {
+type Props = {
   cObj: TodosStruc;
+  delObj: Function;
 };
 
-export default function CompletedTask({ cObj }: props) {
+export default function CompletedTask({ cObj, delObj }: Props) {
   return (
     <div>
       {cObj?.map((todo, index) => {
@@ -15,7 +16,10 @@ export default function CompletedTask({ cObj }: props) {
             text={todo.task}
             status={todo.status}
             key={todo.task + index}
-            setComp={() => console.log("Delete")}
+            delObj={() => {
+              delObj(index);
+            }}
+            setComp={() => {}}
           />
         );
       })}

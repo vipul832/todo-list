@@ -1,10 +1,10 @@
 import React from "react";
 
-type propsBtn = {
+type PropsBtn = {
   instat: () => void;
 };
 
-export default function AddButton({ instat }: propsBtn) {
+export default function AddButton({ instat }: PropsBtn) {
   return (
     <div>
       <button className="add-btn position-absolute" onClick={() => instat()}>
