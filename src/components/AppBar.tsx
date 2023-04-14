@@ -36,7 +36,7 @@ export default function AppBar() {
   //   const [date, setDate] = useState(todaydate);
   //   const [day, setDay] = useState(todayday);
   return (
-    <div className="mt-5 p-2">
+    <div className="mt-4 p-2">
       <div className="d-flex justify-content-between align-items-center mx-5">
         <div className="date-area d-flex justify-content-around align-items-center">
           <div className="">

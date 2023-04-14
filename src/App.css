@@ -1,5 +1,9 @@
 * {
   font-family: "Poppins", sans-serif;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  width: 0rem;
 }
 
 .todo-area {
@@ -43,9 +47,9 @@
 
 .task-area {
   justify-content: center;
-  flex-direction: column;
-  display: flex;
   margin: 0 3rem 0 3rem;
+  height: 30rem;
+  overflow: scroll;
 }
 
 .stat-btn {
@@ -58,3 +62,16 @@
   height: 0.2rem; 
 }
   */
+
+.form-control {
+  font-size: 1.71rem;
+}
+
+/* .input-text-area {
+  position: absolute;
+  top: 80%;
+} */
+
+#input-task-area {
+  border: none;
+}

@@ -2,6 +2,7 @@ import React from "react";
 type TaskProps = {
   text: string;
   status: boolean;
+  setComp: Function;
 };
 
 export default function Task(props: TaskProps) {
@@ -12,8 +13,12 @@ export default function Task(props: TaskProps) {
       >
         {props.text}
       </p>
-      {/* <input type="checkbox" checked={props.status} /> */}
-      <button className="stat-btn">
+      <button
+        className="stat-btn"
+        onClick={() => {
+          props.status ? "pending" : props.setComp();
+        }}
+      >
         {" "}
         <img
           id="stat-img"
