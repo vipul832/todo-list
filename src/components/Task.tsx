@@ -2,8 +2,7 @@ import React from "react";
 type TaskProps = {
   text: string;
   status: boolean;
-  setComp: Function;
-  delObj: Function;
+  change: Function;
 };
 
 export default function Task(props: TaskProps) {
@@ -17,7 +16,7 @@ export default function Task(props: TaskProps) {
       <button
         className="stat-btn"
         onClick={() => {
-          props.status ? props.delObj() : props.setComp();
+          props.change();
         }}
       >
         {" "}

@@ -4,10 +4,10 @@ import { TodosStruc } from "./TodoTask";
 
 type Props = {
   cObj: TodosStruc;
-  delObj: Function;
+  change: Function;
 };
 
-export default function CompletedTask({ cObj, delObj }: Props) {
+export default function CompletedTask({ cObj, change }: Props) {
   return (
     <div>
       {cObj?.map((todo, index) => {
@@ -16,10 +16,10 @@ export default function CompletedTask({ cObj, delObj }: Props) {
             text={todo.task}
             status={todo.status}
             key={todo.task + index}
-            delObj={() => {
-              delObj(index);
+            change={() => {
+              change(index);
             }}
-            setComp={() => {}}
+            // setComp={() => {}}
           />
         );
       })}

@@ -11,6 +11,7 @@ export type TaskStruc = {
 
 export type TodosStruc = TaskStruc[];
 
+// Initial function for Main Object
 function getLocalData(): TodosStruc {
   console.log("call");
   let localData = localStorage.getItem("todos");
@@ -30,13 +31,18 @@ export default function TodoTask() {
   const [todosObj, setTodosObj] = useState<TodosStruc>(getLocalData);
   const [pending, setPending] = useState<TodosStruc>([]);
   const [complete, setComplete] = useState<TodosStruc>([]);
+
+  //Add new Task in Todo List function
   function addDataInTodo(obj: TaskStruc) {
     setTodosObj([...todosObj, obj]);
   }
+
+  // Update local storage function as Todo list change
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todosObj));
   }, [todosObj]);
 
+  // Bifurcation of Pending and Completed Task function
   useEffect(() => {
     let temPending: TodosStruc;
     let temComplete: TodosStruc = [];
@@ -51,6 +57,7 @@ export default function TodoTask() {
     setComplete(temComplete);
   }, [todosObj]);
 
+  // Setting Status of Task false to true
   function setCompleteTask(index2: number) {
     let temP: TodosStruc = [];
     let task: TodosStruc = pending.filter((todo, index) => {
@@ -70,6 +77,7 @@ export default function TodoTask() {
     toast.success("Task Completed");
   }
 
+  //Delete function
   function deleteData(index2: number) {
     const newTodosObj = todosObj.filter((todos, index) => {
       if (index !== index2) {
@@ -83,8 +91,8 @@ export default function TodoTask() {
   return (
     <div className="">
       <div className="task-area">
-        <CompletedTask cObj={complete} delObj={deleteData} />
-        <PendingTask pObj={pending} setComp={setCompleteTask} />
+        <CompletedTask cObj={complete} change={deleteData} />
+        <PendingTask pObj={pending} change={setCompleteTask} />
       </div>
       <InputAndBtn addData={addDataInTodo} />
     </div>

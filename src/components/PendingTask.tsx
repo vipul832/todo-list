@@ -4,10 +4,10 @@ import { TodosStruc } from "./TodoTask";
 
 type Props = {
   pObj: TodosStruc;
-  setComp: Function;
+  change: Function;
 };
 
-export default function PendingTask({ pObj, setComp }: Props) {
+export default function PendingTask({ pObj, change }: Props) {
   return (
     <div>
       {pObj?.map((todo, index) => {
@@ -16,7 +16,7 @@ export default function PendingTask({ pObj, setComp }: Props) {
             text={todo.task}
             status={todo.status}
             key={todo.task + index}
-            setComp={() => setComp(index)}
+            change={() => change(index)}
           />
         );
       })}
