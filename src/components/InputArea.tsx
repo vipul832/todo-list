@@ -1,10 +1,15 @@
 import React, { FormEvent, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
+import { TaskStruc } from "./TodoTask";
 
 type InputStat = {
   instat: () => void;
   addData: Function;
 };
+
+function checkInput(obj: string): boolean {
+  return /[a-zA-Z0-9!@#\$%\^\&*\)/\(+=._-]+$/.test(obj);
+}
 
 export default function InputArea({ instat, addData }: InputStat) {
   const value = useRef<HTMLInputElement>(null);
@@ -13,9 +18,14 @@ export default function InputArea({ instat, addData }: InputStat) {
     e.preventDefault();
     if (value.current) {
       const newData = { task: value.current.value, status: false };
-      addData(newData);
-      value.current.value = "";
-      toast.success("Task Added Successfully");
+      if (checkInput(newData.task)) {
+        addData(newData);
+        value.current.value = "";
+        toast.success("Task Added Successfully");
+      } else {
+        value.current.value = "";
+        toast.error("Invalid Input");
+      }
     }
   }
 

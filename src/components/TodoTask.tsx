@@ -9,32 +9,59 @@ export type TaskStruc = {
   status: boolean;
 };
 
-export type TodosStruc = TaskStruc[];
+export type TodosStruc = { todos: TaskStruc[]; date: number };
+
+const TODAYDATE = new Date().getDate();
+
+const reSetData: TodosStruc = { todos: [], date: TODAYDATE };
 
 // Initial function for Main Object
 function getLocalData(): TodosStruc {
   console.log("call");
   let localData = localStorage.getItem("todos");
-  let set: TodosStruc = [];
-  if (localData) {
-    if (localData !== null) {
-      let mainData: TodosStruc = JSON.parse(localData);
+
+  if (localData !== null) {
+    let mainData: TodosStruc = JSON.parse(localData);
+    if (mainData.date === TODAYDATE) {
       return mainData;
+    } else {
+      localStorage.setItem("todos", JSON.stringify(reSetData));
+      return reSetData;
     }
   } else {
-    localStorage.setItem("todos", JSON.stringify(set));
+    console.log("not found");
+    localStorage.setItem("todos", JSON.stringify(reSetData));
   }
-  return set;
+  return reSetData;
 }
 
 export default function TodoTask() {
   const [todosObj, setTodosObj] = useState<TodosStruc>(getLocalData);
-  const [pending, setPending] = useState<TodosStruc>([]);
-  const [complete, setComplete] = useState<TodosStruc>([]);
+  const [pending, setPending] = useState<TaskStruc[]>([]);
+  const [complete, setComplete] = useState<TaskStruc[]>([]);
 
   //Add new Task in Todo List function
   function addDataInTodo(obj: TaskStruc) {
-    setTodosObj([...todosObj, obj]);
+    const getLocal = localStorage.getItem("todos");
+    if (getLocal !== null) {
+      const tempObj: TodosStruc = JSON.parse(getLocal);
+      if (tempObj.date === TODAYDATE) {
+        setTodosObj({ ...todosObj, todos: [...todosObj.todos, obj] });
+      } else {
+        console.log("different date");
+        localStorage.setItem(
+          "todos",
+          JSON.stringify({ todos: [obj], date: TODAYDATE })
+        );
+        setTodosObj({ todos: [obj], date: TODAYDATE });
+      }
+    } else {
+      localStorage.setItem(
+        "todos",
+        JSON.stringify({ todos: [obj], date: TODAYDATE })
+      );
+      setTodosObj({ todos: [obj], date: TODAYDATE });
+    }
   }
 
   // Update local storage function as Todo list change
@@ -44,9 +71,9 @@ export default function TodoTask() {
 
   // Bifurcation of Pending and Completed Task function
   useEffect(() => {
-    let temPending: TodosStruc;
-    let temComplete: TodosStruc = [];
-    temPending = todosObj?.filter((task: TaskStruc) => {
+    let temPending: TaskStruc[];
+    let temComplete: TaskStruc[] = [];
+    temPending = todosObj.todos?.filter((task: TaskStruc) => {
       if (task.status != true) {
         return task;
       } else {
@@ -59,8 +86,8 @@ export default function TodoTask() {
 
   // Setting Status of Task false to true
   function setCompleteTask(index2: number) {
-    let temP: TodosStruc = [];
-    let task: TodosStruc = pending.filter((todo, index) => {
+    let temP: TaskStruc[] = [];
+    let task: TaskStruc[] = pending.filter((todo, index) => {
       if (index === index2) {
         return todo;
       } else {
@@ -72,28 +99,38 @@ export default function TodoTask() {
     setComplete(upDateComp);
     setPending(temP);
     const upDataTodos = [...upDateComp, ...temP];
-    localStorage.setItem("todos", JSON.stringify(upDataTodos));
-    setTodosObj(upDataTodos);
+    localStorage.setItem(
+      "todos",
+      JSON.stringify({ ...todosObj, todos: upDataTodos })
+    );
+    setTodosObj({ ...todosObj, todos: upDataTodos });
     toast.success("Task Completed");
   }
 
   //Delete function
   function deleteData(index2: number) {
-    const newTodosObj = todosObj.filter((todos, index) => {
+    const newTodosObj = todosObj.todos.filter((todos, index) => {
       if (index !== index2) {
         return todos;
       }
     });
-    setTodosObj(newTodosObj);
+    setTodosObj({ ...todosObj, todos: newTodosObj });
     toast.error("Task is Deleted");
   }
 
   return (
     <div className="">
-      <div className="task-area">
-        <CompletedTask cObj={complete} change={deleteData} />
-        <PendingTask pObj={pending} change={setCompleteTask} />
-      </div>
+      {todosObj.todos.length > 0 ? (
+        <div className="task-area">
+          <CompletedTask cObj={complete} change={deleteData} />
+          <PendingTask pObj={pending} change={setCompleteTask} />
+        </div>
+      ) : (
+        <div className="task-area2">
+          <h4>All Tasks Completed</h4>
+          <img src="../public/assets/complete.png" alt="" width={"70%"} />
+        </div>
+      )}
       <InputAndBtn addData={addDataInTodo} />
     </div>
   );

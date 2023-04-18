@@ -1,9 +1,9 @@
 import React from "react";
 import Task from "./Task";
-import { TodosStruc } from "./TodoTask";
+import { TaskStruc, TodosStruc } from "./TodoTask";
 
 type Props = {
-  pObj: TodosStruc;
+  pObj: TaskStruc[];
   change: Function;
 };
 

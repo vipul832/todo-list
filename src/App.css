@@ -57,13 +57,10 @@
   border: none;
 }
 
-/* .stat-img {
-  width: 0.2rem;
-  height: 0.2rem; 
+.task-area2 {
+  justify-content: center;
+  margin: 0 3rem 0 3rem;
+  text-align: center;
+  height: 28rem;
+  margin-top: 2rem;
 }
-  */
-
-/* .input-text-area {
-  position: absolute;
-  top: 80%;
-} */
