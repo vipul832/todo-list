@@ -3,8 +3,9 @@ import React, { useState } from "react";
 const todayDate = new Date().getDate(); // (day)
 const todayDay = new Date().getDay(); // (week)
 const todayMonth = new Date().getMonth(); // (month)
-const todayYear = new Date().getFullYear();
-const DAYS = [
+const todayYear = new Date().getFullYear(); // )(Year)
+
+const days = [
   "SUNDAY",
   "MONDAY",
   "TUESDAY",
@@ -14,7 +15,7 @@ const DAYS = [
   "SATURDAY",
 ];
 
-const MONTHS = [
+const months = [
   "JAN",
   "FEB",
   "MAR",
@@ -29,14 +30,12 @@ const MONTHS = [
   "DEC",
 ];
 
-let month = MONTHS[todayMonth];
-let day = DAYS[todayDay];
+let month = months[todayMonth];
+let day = days[todayDay];
 
 export default function AppBar() {
-  //   const [date, setDate] = useState(todaydate);
-  //   const [day, setDay] = useState(todayday);
   return (
-    <div className="mt-5 p-2">
+    <div className="mt-4 p-2">
       <div className="d-flex justify-content-between align-items-center mx-5">
         <div className="date-area d-flex justify-content-around align-items-center">
           <div className="">
