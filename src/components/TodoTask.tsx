@@ -133,7 +133,7 @@ export default function TodoTask() {
       ) : (
         <div className="task-area2">
           <h4>All Tasks Completed</h4>
-          <img src="../public/assets/complete.png" alt="" width={"70%"} />
+          <img src="/assets/complete.png" alt="" width={"70%"} />
         </div>
       )}
       <InputAndBtn addData={addDataInTodo} />
