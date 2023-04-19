@@ -1,6 +1,6 @@
 import React from "react";
 import Task from "./Task";
-import { TaskStruc, TodosStruc } from "./TodoTask";
+import { TaskStruc } from "./TodoTask";
 
 type Props = {
   pObj: TaskStruc[];

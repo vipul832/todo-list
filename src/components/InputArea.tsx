@@ -1,17 +1,17 @@
 import React, { FormEvent, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
-import { TaskStruc } from "./TodoTask";
 
 type InputStat = {
-  instat: () => void;
+  inStat: () => void;
   addData: Function;
 };
 
+// Validation function for Text
 function checkInput(obj: string): boolean {
   return /[a-zA-Z0-9!@#\$%\^\&*\)/\(+=._-]+$/.test(obj);
 }
 
-export default function InputArea({ instat, addData }: InputStat) {
+export default function InputArea({ inStat, addData }: InputStat) {
   const value = useRef<HTMLInputElement>(null);
 
   function submitHandler(e: FormEvent) {
@@ -33,12 +33,12 @@ export default function InputArea({ instat, addData }: InputStat) {
     function keyHandler(e: KeyboardEvent) {
       if (e.key === "Escape") {
         // console.log(e.target.value);
-        instat();
+        inStat();
       }
     }
     window.addEventListener("keydown", keyHandler);
     return () => {
-      console.log("clear eventlistner");
+      // console.log("clear eventlistner");
       window.removeEventListener("keydown", keyHandler);
     };
   }, []);

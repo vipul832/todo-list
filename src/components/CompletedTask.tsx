@@ -1,6 +1,6 @@
 import React from "react";
 import Task from "./Task";
-import { TaskStruc, TodosStruc } from "./TodoTask";
+import { TaskStruc } from "./TodoTask";
 
 type Props = {
   cObj: TaskStruc[];
@@ -19,7 +19,6 @@ export default function CompletedTask({ cObj, change }: Props) {
             change={() => {
               change(index);
             }}
-            // setComp={() => {}}
           />
         );
       })}

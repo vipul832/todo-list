@@ -4,37 +4,42 @@ import CompletedTask from "./CompletedTask";
 import PendingTask from "./PendingTask";
 import toast from "react-hot-toast";
 
+// General structure of Any Task
 export type TaskStruc = {
   task: string;
   status: boolean;
 };
 
+// Structure of Main Object
 export type TodosStruc = { todos: TaskStruc[]; date: number };
 
-const TODAYDATE = new Date().getDate();
+// Today Date
+const todayDate = new Date().getDate();
 
-const reSetData: TodosStruc = { todos: [], date: TODAYDATE };
+// Initial Value
+const reSetData: TodosStruc = { todos: [], date: todayDate };
 
 // Initial function for Main Object
 function getLocalData(): TodosStruc {
-  console.log("call");
+  // console.log("call");
   let localData = localStorage.getItem("todos");
 
   if (localData !== null) {
     let mainData: TodosStruc = JSON.parse(localData);
-    if (mainData.date === TODAYDATE) {
+    if (mainData.date === todayDate) {
       return mainData;
     } else {
       localStorage.setItem("todos", JSON.stringify(reSetData));
       return reSetData;
     }
   } else {
-    console.log("not found");
+    // console.log("not found");
     localStorage.setItem("todos", JSON.stringify(reSetData));
   }
   return reSetData;
 }
 
+// Main Component Function
 export default function TodoTask() {
   const [todosObj, setTodosObj] = useState<TodosStruc>(getLocalData);
   const [pending, setPending] = useState<TaskStruc[]>([]);
@@ -45,22 +50,22 @@ export default function TodoTask() {
     const getLocal = localStorage.getItem("todos");
     if (getLocal !== null) {
       const tempObj: TodosStruc = JSON.parse(getLocal);
-      if (tempObj.date === TODAYDATE) {
+      if (tempObj.date === todayDate) {
         setTodosObj({ ...todosObj, todos: [...todosObj.todos, obj] });
       } else {
-        console.log("different date");
+        // console.log("different date");
         localStorage.setItem(
           "todos",
-          JSON.stringify({ todos: [obj], date: TODAYDATE })
+          JSON.stringify({ todos: [obj], date: todayDate })
         );
-        setTodosObj({ todos: [obj], date: TODAYDATE });
+        setTodosObj({ todos: [obj], date: todayDate });
       }
     } else {
       localStorage.setItem(
         "todos",
-        JSON.stringify({ todos: [obj], date: TODAYDATE })
+        JSON.stringify({ todos: [obj], date: todayDate })
       );
-      setTodosObj({ todos: [obj], date: TODAYDATE });
+      setTodosObj({ todos: [obj], date: todayDate });
     }
   }
 
