@@ -8,7 +8,7 @@ To-do lists are a list of tasks that an individual needs to complete or accompli
 - Typescript <img src="https://user-images.githubusercontent.com/122255127/230858024-198ce013-8b85-454b-b345-7e20f6e26b15.png" width="40px"/>
 
 ## Live Demo
-- [DEMO LINK](https://magnificent-genie-6e6971.netlify.app/)
+- [DEMO LINK](https://whimsical-mermaid-edc2a1.netlify.app/)
 
 ## Task To Perform
 - Create a dummy project named “Todo-react-app” in react using any of the above methods - CRA or webpack from scratch.
