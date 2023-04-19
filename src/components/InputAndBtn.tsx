@@ -13,12 +13,12 @@ export default function InputAndBtn(props: Props) {
     <div>
       {showInput && (
         <InputArea
-          instat={() => setShowInput((state) => !state)}
+          inStat={() => setShowInput((state) => !state)}
           addData={props.addData}
         />
       )}
       {!showInput && (
-        <AddButton instat={() => setShowInput((state) => !state)} />
+        <AddButton inStat={() => setShowInput((state) => !state)} />
       )}
     </div>
   );
